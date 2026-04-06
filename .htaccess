@@ -1,0 +1,25 @@
+# Deny access to sensitive files
+<FilesMatch "\.(env|sql|md|json|lock|log)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Deny access to vendor directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^vendor/ - [F,L]
+    RewriteRule ^includes/ - [F,L]
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>

@@ -1,0 +1,101 @@
+/* ============================================
+   HIM - Tracker Styles
+   ============================================ */
+
+.tracker-banner {
+    display: flex; justify-content: space-between; align-items: center;
+    background: white; border-radius: var(--border-radius-lg);
+    padding: 24px 32px; border: 1px solid var(--border-light);
+    border-left: 5px solid var(--phase-color); margin-bottom: 24px;
+}
+.phase-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 50px;
+    font-weight: 600; font-size: 14px; margin-bottom: 8px;
+}
+.tracker-banner-left p { color: var(--text-secondary); font-size: 14px; max-width: 400px; }
+.countdown { text-align: center; }
+.countdown-number {
+    display: block; font-family: var(--font-heading);
+    font-size: 48px; font-weight: 800; color: var(--color-primary); line-height: 1;
+}
+.countdown-label { font-size: 13px; color: var(--text-muted); }
+
+.tracker-grid { display: grid; grid-template-columns: 1fr 320px; gap: 24px; }
+
+/* Calendar */
+.calendar-card { padding: 24px; }
+.calendar-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 20px;
+}
+.calendar-header h3 { font-size: 20px; }
+.calendar-weekdays {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    text-align: center; font-size: 13px; font-weight: 600;
+    color: var(--text-muted); margin-bottom: 8px; padding: 8px 0;
+}
+.calendar-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;
+}
+.cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    border-radius: 12px; font-size: 14px; font-weight: 500;
+    cursor: pointer; transition: var(--transition-fast); position: relative;
+}
+.cal-day:hover { background: var(--color-primary-light); }
+.cal-day.today { font-weight: 700; box-shadow: inset 0 0 0 2px var(--color-primary); }
+.cal-day.empty { cursor: default; }
+.cal-day.empty:hover { background: none; }
+.cal-day.menstrual { background: var(--phase-menstrual); color: white; }
+.cal-day.follicular { background: var(--phase-follicular); color: white; }
+.cal-day.ovulation { background: var(--phase-ovulation); color: white; }
+.cal-day.luteal { background: var(--phase-luteal); color: white; }
+.cal-day.predicted { border: 2px dashed var(--color-primary); color: var(--color-primary); }
+.cal-day.other-month { opacity: 0.3; }
+.cal-day .symptom-dot {
+    position: absolute; bottom: 3px; width: 4px; height: 4px;
+    border-radius: 50%; background: var(--color-warning);
+}
+
+/* Legend */
+.calendar-legend {
+    display: flex; flex-wrap: wrap; gap: 16px; margin-top: 20px;
+    padding-top: 16px; border-top: 1px solid var(--border-light);
+}
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+.legend-dot { width: 12px; height: 12px; border-radius: 4px; }
+.legend-dot-predicted { border: 2px dashed var(--color-primary); background: transparent; }
+
+/* Tracker Side */
+.tracker-side { display: flex; flex-direction: column; gap: 0; }
+.info-list { display: flex; flex-direction: column; gap: 12px; }
+.info-item {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 14px;
+}
+.info-label { color: var(--text-muted); }
+.info-value { font-weight: 600; color: var(--text-primary); }
+.pcos-alert {
+    background: #FFF5EB; padding: 12px; border-radius: var(--border-radius-sm);
+    font-size: 13px; color: #A06A2F; display: flex; gap: 8px; align-items: flex-start;
+}
+
+/* Period List */
+.period-list { display: flex; flex-direction: column; gap: 8px; }
+.period-item {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 12px; border-radius: var(--border-radius-sm);
+    background: var(--bg-body); font-size: 13px;
+}
+.flow-indicator {
+    padding: 2px 10px; border-radius: 50px; font-size: 11px; font-weight: 600;
+}
+.flow-light { background: #FFF0F3; color: #E8567F; }
+.flow-medium { background: #FFE0E8; color: #C73E66; }
+.flow-heavy { background: #E8567F; color: white; }
+
+@media (max-width: 1023px) {
+    .tracker-grid { grid-template-columns: 1fr; }
+    .tracker-banner { flex-direction: column; gap: 16px; text-align: center; }
+}

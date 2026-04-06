@@ -1,0 +1,56 @@
+/* ============================================
+   HIM - Responsive Styles
+   ============================================ */
+
+/* Desktop Large (1440px+) */
+@media (min-width: 1440px) {
+    .container { max-width: 1320px; }
+}
+
+/* Desktop (1024px - 1439px) */
+@media (max-width: 1439px) {
+    h1 { font-size: 42px; }
+}
+
+/* Tablet (768px - 1023px) */
+@media (max-width: 1023px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 30px; }
+    .header-nav { display: none; }
+    .sidebar-toggle { display: flex; }
+    .mobile-nav { display: flex; }
+    .authenticated .main-content { padding-bottom: 80px; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .profile-name { display: none; }
+}
+
+/* Mobile Large (577px - 767px) */
+@media (max-width: 767px) {
+    h1 { font-size: 30px; }
+    h2 { font-size: 26px; }
+    h3 { font-size: 20px; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: 1fr; }
+    .grid-4 { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .header-nav-guest { display: none; }
+    .mobile-menu-btn { display: flex; }
+    .auth-card { padding: 32px 24px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+    .container { padding: 0 16px; }
+}
+
+/* Mobile Small (up to 576px) */
+@media (max-width: 576px) {
+    h1 { font-size: 26px; }
+    h2 { font-size: 22px; }
+    .btn-primary { padding: 12px 24px; font-size: 15px; }
+    .btn-lg { padding: 14px 28px; font-size: 16px; }
+    .card { padding: var(--space-md); }
+    .auth-card { padding: 24px 20px; }
+    .notif-dropdown { width: 280px; right: -48px; }
+    .flash-message { margin: 0 16px 16px; }
+}

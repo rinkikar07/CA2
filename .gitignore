@@ -1,0 +1,24 @@
+# Environment Variables
+.env
+
+# XAMPP / Local Server logs & temp
+error_log
+access_log
+php_errors.log
+composer.phar
+vendor/
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Project specific
+sql/*.sql
+assets/uploads/*
+!assets/uploads/.gitkeep

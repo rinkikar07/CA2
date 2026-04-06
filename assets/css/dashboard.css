@@ -1,0 +1,104 @@
+/* ============================================
+   HIM - Dashboard Styles
+   ============================================ */
+
+.welcome-banner {
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--border-radius-lg); padding: 32px 40px;
+    color: white; margin-bottom: 24px;
+}
+.welcome-text h1 { color: white; font-size: 28px; margin-bottom: 4px; }
+.welcome-text p { opacity: 0.9; font-size: 16px; }
+.welcome-date { text-align: center; }
+.welcome-date .day {
+    display: block; font-family: var(--font-heading);
+    font-size: 42px; font-weight: 800; line-height: 1;
+}
+.welcome-date .month { font-size: 14px; opacity: 0.8; }
+
+/* Stats Grid */
+.stats-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 16px; margin-bottom: 24px;
+}
+.stat-card {
+    background: white; border-radius: var(--border-radius-lg);
+    padding: 20px; border: 1px solid var(--border-light);
+    display: flex; align-items: center; gap: 16px;
+    transition: var(--transition-normal);
+}
+.stat-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.stat-icon {
+    width: 52px; height: 52px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+}
+.stat-info h3 { font-size: 20px; margin-bottom: 2px; }
+.stat-info p { font-size: 13px; color: var(--text-muted); line-height: 1.4; }
+.stat-info small { color: var(--text-muted); }
+.phase-card { border-left: 4px solid var(--phase-color); }
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.card-title {
+    font-size: 18px; margin-bottom: 16px;
+    padding-bottom: 12px; border-bottom: 1px solid var(--border-light);
+}
+
+/* Quick Actions */
+.quick-actions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.action-btn {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    padding: 20px; border-radius: var(--border-radius-md);
+    font-weight: 600; font-size: 14px; transition: var(--transition-normal);
+}
+.action-btn:hover { transform: translateY(-2px); }
+.action-btn i { font-size: 24px; }
+.action-period { background: var(--color-primary-light); color: var(--color-primary); }
+.action-period:hover { background: var(--color-primary); color: white; }
+.action-chat { background: var(--color-secondary-light); color: var(--color-secondary); }
+.action-chat:hover { background: var(--color-secondary); color: white; }
+.action-voice { background: var(--color-mint); color: var(--color-sage); }
+.action-voice:hover { background: var(--color-sage); color: white; }
+.action-mood { background: #FFF5EB; color: var(--color-warning); }
+.action-mood:hover { background: var(--color-warning); color: white; }
+
+/* Mood Selector */
+.mood-selector { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.mood-emoji {
+    width: 52px; height: 52px; font-size: 26px;
+    border-radius: 50%; border: 3px solid transparent;
+    background: var(--color-primary-light);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: var(--transition-normal);
+}
+.mood-emoji:hover { transform: scale(1.15); border-color: var(--color-primary); }
+.mood-emoji.active { border-color: var(--color-primary); box-shadow: var(--shadow-glow); }
+.mood-logged { text-align: center; padding: 16px; }
+.mood-logged p { margin-bottom: 12px; color: var(--text-secondary); }
+
+/* Tip Card */
+.tip-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.tip-header .card-title { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.tip-card h4 { color: var(--text-primary); margin-bottom: 8px; }
+.tip-card p { color: var(--text-secondary); font-size: 14px; line-height: 1.6; }
+
+/* Points Display */
+.points-display { display: flex; align-items: center; justify-content: space-between; }
+.points-value { display: flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 700; }
+.points-value i { font-size: 20px; }
+
+/* Responsive */
+@media (max-width: 1023px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 576px) {
+    .stats-grid { grid-template-columns: 1fr; }
+    .welcome-banner { flex-direction: column; text-align: center; gap: 16px; padding: 24px; }
+    .welcome-text h1 { font-size: 24px; }
+}
