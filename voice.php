@@ -15,7 +15,7 @@ require_once 'includes/header.php';
 ?>
 
 <div class="container-md" style="padding-top:20px;">
-    <div class="voice-page" data-aos="fade-up">
+    <div class="voice-page" data-aos="zoom-in-up">
         <!-- Hero -->
         <div class="voice-hero">
             <h2><?= $phaseInfo['emoji'] ?> Voice Assistant</h2>
@@ -53,7 +53,7 @@ require_once 'includes/header.php';
         </div>
         
         <!-- Quick Actions -->
-        <div class="voice-actions" data-aos="fade-up" data-aos-delay="200">
+        <div class="voice-actions" data-aos="zoom-in-up" data-aos-delay="200">
             <button class="voice-action-btn" id="breathingBtn">
                 <i class="fa-solid fa-wind"></i>
                 <span>Guided Breathing</span>
@@ -156,86 +156,69 @@ require_once 'includes/header.php';
 }
 </style>
 
-<script>
+<script type="module">
+import { Conversation } from "https://cdn.jsdelivr.net/npm/@11labs/client/+esm";
+
 document.addEventListener('DOMContentLoaded', function() {
     const micBtn = document.getElementById('micBtn');
     const micIcon = document.getElementById('micIcon');
     const micStatus = document.getElementById('micStatus');
     const breatheRing = document.getElementById('breatheRing');
-    const transcriptDiv = document.getElementById('voiceTranscript');
-    const transcriptText = document.getElementById('transcriptText');
-    const responseDiv = document.getElementById('voiceResponse');
-    const responseText = document.getElementById('responseText');
-    const voiceWarning = document.getElementById('voiceWarning');
     
-    let recognition = null;
+    let conversation = null;
     let isListening = false;
     
-    // Check browser support
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (!SpeechRecognition) {
-        voiceWarning.style.display = 'flex';
-        micBtn.style.opacity = '0.5';
-        return;
-    }
-    
-    recognition = new SpeechRecognition();
-    recognition.continuous = false;
-    recognition.interimResults = false;
-    recognition.lang = 'en-US';
-    
-    micBtn.addEventListener('click', function() {
+    micBtn.addEventListener('click', async function() {
         if (isListening) {
-            recognition.stop();
+            if (conversation) {
+                await conversation.endSession();
+            }
+            isListening = false;
+            micBtn.classList.remove('listening');
+            breatheRing.classList.remove('active');
+            micIcon.className = 'fa-solid fa-microphone';
+            micStatus.textContent = 'Tap to speak';
         } else {
-            recognition.start();
-            isListening = true;
-            micBtn.classList.add('listening');
-            breatheRing.classList.add('active');
-            micIcon.className = 'fa-solid fa-stop';
-            micStatus.textContent = 'Listening...';
+            try {
+                micStatus.textContent = 'Connecting...';
+                conversation = await Conversation.startSession({
+                    agentId: 'agent_9101kp14nztefgw986jp2kkyg07f',
+                    onConnect: () => {
+                        isListening = true;
+                        micBtn.classList.add('listening');
+                        breatheRing.classList.add('active');
+                        micIcon.className = 'fa-solid fa-stop';
+                        micStatus.textContent = 'Connected. Speak now...';
+                    },
+                    onDisconnect: () => {
+                        isListening = false;
+                        micBtn.classList.remove('listening');
+                        breatheRing.classList.remove('active');
+                        micIcon.className = 'fa-solid fa-microphone';
+                        micStatus.textContent = 'Tap to speak';
+                    },
+                    onError: (error) => {
+                        console.error('Error:', error);
+                        micStatus.textContent = 'Failed to connect. Try again.';
+                        isListening = false;
+                        micBtn.classList.remove('listening');
+                        breatheRing.classList.remove('active');
+                        micIcon.className = 'fa-solid fa-microphone';
+                    },
+                    onModeChange: (mode) => {
+                        if (mode.mode === 'speaking') {
+                            micStatus.textContent = 'HIM is speaking...';
+                        } else {
+                            micStatus.textContent = 'Listening...';
+                        }
+                    }
+                });
+            } catch (err) {
+                console.error(err);
+                micStatus.textContent = 'Connection failed';
+            }
         }
     });
-    
-    recognition.onresult = async function(event) {
-        const text = event.results[0][0].transcript;
-        transcriptText.textContent = text;
-        transcriptDiv.style.display = 'block';
-        micStatus.textContent = 'Processing...';
-        
-        // Get AI response
-        const result = await apiCall('api/chat_handler.php', {
-            action: 'send_message',
-            message: text,
-            mood: 'neutral',
-            phase: '<?= $currentPhase ?>',
-            session_id: '0',
-            csrf_token: getCSRFToken()
-        });
-        
-        if (result.success) {
-            responseText.textContent = result.response;
-            responseDiv.style.display = 'block';
-            speakText(result.response);
-        }
-        micStatus.textContent = 'Tap to speak again';
-    };
-    
-    recognition.onend = function() {
-        isListening = false;
-        micBtn.classList.remove('listening');
-        breatheRing.classList.remove('active');
-        micIcon.className = 'fa-solid fa-microphone';
-        if (micStatus.textContent === 'Listening...') micStatus.textContent = 'Tap to speak';
-    };
-    
-    recognition.onerror = function() {
-        isListening = false;
-        micBtn.classList.remove('listening');
-        breatheRing.classList.remove('active');
-        micIcon.className = 'fa-solid fa-microphone';
-        micStatus.textContent = 'Error. Try again.';
-    };
     
     function speakText(text) {
         if ('speechSynthesis' in window) {
@@ -245,11 +228,6 @@ document.addEventListener('DOMContentLoaded', function() {
             window.speechSynthesis.speak(utterance);
         }
     }
-    
-    // Replay button
-    document.getElementById('replayBtn')?.addEventListener('click', function() {
-        speakText(responseText.textContent);
-    });
     
     // Breathing exercise
     const breathingOverlay = document.getElementById('breathingOverlay');

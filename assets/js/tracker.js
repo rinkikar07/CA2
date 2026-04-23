@@ -13,7 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
     
     function getPhaseForDay(date) {
-        const start = new Date(lastPeriodStart);
+        // Use local timezone safely
+        const start = new Date(lastPeriodStart + 'T00:00:00');
         const diffTime = date.getTime() - start.getTime();
         const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
         const dayInCycle = ((diffDays % cycleLength) + cycleLength) % cycleLength + 1;
@@ -27,7 +28,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function isLoggedPeriodDay(dateStr) {
         return periodData.some(log => {
             const start = log.start_date;
-            const end = log.end_date || log.start_date;
+            let end = log.end_date;
+            if (!end) {
+                // Ongoing period spans from start date to either today or start+periodLength
+                const startDate = new Date(start + 'T00:00:00');
+                startDate.setDate(startDate.getDate() + periodLength - 1);
+                end = startDate.toISOString().split('T')[0];
+            }
             return dateStr >= start && dateStr <= end;
         });
     }
@@ -37,11 +44,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function isPredicted(date) {
-        const start = new Date(lastPeriodStart);
+        const start = new Date(lastPeriodStart + 'T00:00:00');
         const diffDays = Math.floor((date - start) / (1000 * 60 * 60 * 24));
         if (diffDays < 0) return false;
         const dayInCycle = (diffDays % cycleLength) + 1;
-        return dayInCycle <= periodLength && date > new Date();
+        
+        // Ensure it only marks future periods as predicted
+        const today = new Date();
+        today.setHours(0,0,0,0);
+        return dayInCycle <= periodLength && date > today;
     }
     
     function renderCalendar() {
@@ -76,11 +87,18 @@ document.addEventListener('DOMContentLoaded', function() {
             // Logged period
             if (isLoggedPeriodDay(dateStr)) {
                 cell.classList.add('menstrual');
+                cell.innerHTML += '<div style="font-size:12px; line-height:1; margin-top:2px; animation: gentleFloat 2s infinite;">🩸</div>';
             } else if (isPredicted(date)) {
                 cell.classList.add('predicted');
+                cell.innerHTML += '<div style="font-size:12px; line-height:1; margin-top:2px;">🔮</div>';
             } else {
                 const phase = getPhaseForDay(date);
                 cell.classList.add(phase);
+                let emoji = '';
+                if(phase === 'follicular') emoji = '🌿';
+                if(phase === 'ovulation') emoji = '🌸';
+                if(phase === 'luteal') emoji = '🍂';
+                cell.innerHTML += `<div style="font-size:12px; line-height:1; margin-top:2px; opacity:0.8;">${emoji}</div>`;
             }
             
             // Symptom dot

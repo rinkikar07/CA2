@@ -48,7 +48,7 @@
 
 <?php if (isset($extraJS)): ?>
     <?php foreach ($extraJS as $js): ?>
-        <script src="<?= $js ?>"></script>
+        <script src="<?= $js ?>?v=<?= time() ?>"></script>
     <?php endforeach; ?>
 <?php endif; ?>
 

@@ -33,8 +33,9 @@ define('APP_URL', getenv('APP_URL') ?: 'http://localhost/MCA%20PHP/CA2');
 define('APP_DEBUG', getenv('APP_DEBUG') === 'true');
 
 // AI API Configuration
-define('OPENROUTER_API_KEY', getenv('OPENROUTER_API_KEY') ?: '');
-define('OPENROUTER_MODEL', getenv('OPENROUTER_MODEL') ?: 'google/gemini-2.0-flash-001');
+define('AI_API_URL', getenv('AI_API_URL') ?: 'https://integrate.api.nvidia.com/v1/chat/completions');
+define('AI_API_KEY', getenv('AI_API_KEY') ?: '');
+define('AI_MODEL', getenv('AI_MODEL') ?: 'meta/llama-3.1-70b-instruct');
 
 // SMTP Configuration
 define('SMTP_HOST', getenv('SMTP_HOST') ?: 'smtp.gmail.com');

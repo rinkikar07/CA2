@@ -148,7 +148,68 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('newChatBtn')?.addEventListener('click', async function() {
         const result = await showConfirm('Start New Chat?', 'This will end the current conversation.');
         if (result.isConfirmed) {
-            window.location.reload();
+            try {
+                const formData = new FormData();
+                formData.append('action', 'end_session');
+                formData.append('session_id', sessionId);
+                await fetch('api/chat_sessions.php', { method: 'POST', body: formData });
+            } catch (e) { console.error('Failed to end session', e); }
+            window.location.href = 'chat.php';
+        }
+    });
+    
+    // History Modal
+    const historyModal = document.getElementById('historyModal');
+    const closeHistoryBtn = document.getElementById('closeHistoryBtn');
+    const historyList = document.getElementById('historyList');
+    
+    document.getElementById('historyBtn')?.addEventListener('click', async function() {
+        historyModal.style.display = 'flex';
+        historyList.innerHTML = '<div class="loading-spinner"><i class="fa-solid fa-spinner fa-spin"></i> Loading past sessions...</div>';
+        
+        try {
+            const response = await fetch('api/chat_sessions.php?action=get_sessions');
+            const data = await response.json();
+            
+            if (data.success) {
+                if (data.sessions.length === 0) {
+                    historyList.innerHTML = '<div class="empty-state">No past chats found.</div>';
+                    return;
+                }
+                
+                let html = '<div class="session-list">';
+                data.sessions.forEach(session => {
+                    const activeClass = session.id == sessionId ? 'active-session' : '';
+                    html += `
+                        <a href="chat.php?session_id=${session.id}" class="session-item ${activeClass}">
+                            <div class="session-item-header">
+                                <span class="session-title">${session.title}</span>
+                                <span class="session-date">${session.date}</span>
+                            </div>
+                            <div class="session-item-footer">
+                                <span class="session-phase"><i class="fa-solid fa-moon"></i> ${session.phase}</span>
+                                <span class="session-status ${session.status.toLowerCase()}">${session.status}</span>
+                            </div>
+                        </a>
+                    `;
+                });
+                html += '</div>';
+                historyList.innerHTML = html;
+            } else {
+                historyList.innerHTML = '<div class="error-msg">Failed to load history.</div>';
+            }
+        } catch (error) {
+            historyList.innerHTML = '<div class="error-msg">Failed to connect to server.</div>';
+        }
+    });
+    
+    closeHistoryBtn?.addEventListener('click', function() {
+        historyModal.style.display = 'none';
+    });
+    
+    window.addEventListener('click', function(e) {
+        if (e.target === historyModal) {
+            historyModal.style.display = 'none';
         }
     });
     

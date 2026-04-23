@@ -151,13 +151,13 @@ if (isLoggedIn()) {
             <div class="hero-badge" data-aos="fade-down">
                 <i class="fa-solid fa-sparkles"></i> AI-Powered Period Companion
             </div>
-            <h1 data-aos="fade-up" data-aos-delay="100">
+            <h1 data-aos="zoom-in-up" data-aos-delay="100">
                 Your <span class="gradient-text">Intelligent Mate</span><br>During Every Phase
             </h1>
-            <p data-aos="fade-up" data-aos-delay="200">
+            <p data-aos="zoom-in-up" data-aos-delay="200">
                 HIM understands your emotions, predicts your cycle, and provides comfort when you need it most. More than a tracker — your empathetic digital ally.
             </p>
-            <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+            <div class="hero-buttons" data-aos="zoom-in-up" data-aos-delay="300">
                 <a href="register.php" class="btn btn-primary btn-lg">
                     <i class="fa-solid fa-heart"></i> Get Started Free
                 </a>
@@ -165,7 +165,7 @@ if (isLoggedIn()) {
                     <i class="fa-solid fa-arrow-down"></i> Learn More
                 </a>
             </div>
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+            <div class="hero-stats" data-aos="zoom-in-up" data-aos-delay="400">
                 <div class="hero-stat">
                     <div class="number">4</div>
                     <div class="label">Cycle Phases Covered</div>
@@ -185,47 +185,47 @@ if (isLoggedIn()) {
     <!-- Features -->
     <section class="features" id="features">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header" data-aos="zoom-in-up">
                 <h2>Everything You Need, In One Place</h2>
                 <p>Holistic menstrual wellness that cares about your body AND your emotions</p>
             </div>
             <div class="grid grid-3">
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="0">
                     <div class="feature-icon" style="background:var(--color-primary-light); color:var(--color-primary);">
                         <i class="fa-solid fa-calendar-heart"></i>
                     </div>
                     <h3>Smart Cycle Tracking</h3>
                     <p>Intelligent predictions that learn from your patterns. Track periods, symptoms, and moods with a beautiful calendar view.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="feature-icon" style="background:var(--color-secondary-light); color:var(--color-secondary);">
                         <i class="fa-solid fa-comments"></i>
                     </div>
                     <h3>AI Chat Companion</h3>
                     <p>An empathetic AI that understands your mood and cycle phase. Get comfort, motivation, or just someone to talk to.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="feature-icon" style="background:var(--color-mint); color:var(--color-sage);">
                         <i class="fa-solid fa-microphone"></i>
                     </div>
                     <h3>Voice Assistant</h3>
                     <p>Hands-free comfort on painful days. Just speak and receive soothing responses, guided breathing, and audiobooks.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="0">
                     <div class="feature-icon" style="background:#FFF5EB; color:var(--color-warning);">
                         <i class="fa-solid fa-spa"></i>
                     </div>
                     <h3>Wellness Hub</h3>
                     <p>Phase-specific tips for nutrition, exercise, sleep, and mindfulness. Curated books and audiobooks for mental stimulation.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="feature-icon" style="background:var(--color-primary-light); color:var(--color-primary);">
                         <i class="fa-solid fa-gamepad"></i>
                     </div>
                     <h3>Gamified Wellness</h3>
                     <p>Earn badges, complete challenges, and build streaks. Make self-care fun and build healthy habits that last.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="feature-icon" style="background:var(--color-secondary-light); color:var(--color-secondary);">
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
@@ -239,27 +239,27 @@ if (isLoggedIn()) {
     <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header" data-aos="zoom-in-up">
                 <h2>How HIM Works</h2>
                 <p>Simple, private, and always by your side</p>
             </div>
             <div class="steps-grid">
-                <div class="step-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="step-card" data-aos="zoom-in-up" data-aos-delay="0">
                     <div class="step-number">1</div>
                     <h4>Create Account</h4>
                     <p>Sign up with your basic info and last period date. We keep everything private.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="step-card" data-aos="zoom-in-up" data-aos-delay="100">
                     <div class="step-number">2</div>
                     <h4>Log Your Cycle</h4>
                     <p>Track periods, symptoms, and moods. HIM learns your patterns for better predictions.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="step-card" data-aos="zoom-in-up" data-aos-delay="200">
                     <div class="step-number">3</div>
                     <h4>Chat & Get Support</h4>
                     <p>Talk to your AI companion anytime. Get empathetic, phase-aware responses.</p>
                 </div>
-                <div class="step-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="step-card" data-aos="zoom-in-up" data-aos-delay="300">
                     <div class="step-number">4</div>
                     <h4>Thrive & Grow</h4>
                     <p>Follow wellness tips, complete challenges, and watch your health insights improve.</p>

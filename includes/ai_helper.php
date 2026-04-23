@@ -9,39 +9,53 @@ require_once __DIR__ . '/config.php';
 /**
  * Get AI chat response via OpenRouter API
  */
-function getAIResponse($userMessage, $mood, $cyclePhase, $userName = 'dear') {
-    $apiKey = OPENROUTER_API_KEY;
-    $model = OPENROUTER_MODEL;
+function getAIResponse($userMessage, $mood, $cyclePhase, $userName = 'dear', $history = []) {
+    $apiUrl = AI_API_URL;
+    $apiKey = AI_API_KEY;
+    $model = AI_MODEL;
     
     // If no API key, use fallback
-    if (empty($apiKey) || $apiKey === 'your_openrouter_api_key_here') {
+    if (empty($apiKey) || strpos($apiKey, 'your_') !== false) {
         return getFallbackResponse($userMessage, $mood, $cyclePhase, $userName);
     }
     
     $systemPrompt = buildSystemPrompt($mood, $cyclePhase, $userName);
     
+    $messages = [
+        ['role' => 'system', 'content' => $systemPrompt]
+    ];
+    
+    foreach ($history as $msg) {
+        $messages[] = $msg;
+    }
+    
+    $messages[] = ['role' => 'user', 'content' => $userMessage];
+    
     $data = [
         'model' => $model,
-        'messages' => [
-            ['role' => 'system', 'content' => $systemPrompt],
-            ['role' => 'user', 'content' => $userMessage]
-        ],
+        'messages' => $messages,
         'max_tokens' => 300,
         'temperature' => 0.8
     ];
     
-    $ch = curl_init('https://openrouter.ai/api/v1/chat/completions');
+    $headers = [
+        'Content-Type: application/json',
+        'Authorization: Bearer ' . $apiKey
+    ];
+    
+    if (strpos($apiUrl, 'openrouter.ai') !== false) {
+        $headers[] = 'HTTP-Referer: ' . APP_URL;
+        $headers[] = 'X-Title: HIM - Her Intelligent Mate';
+    }
+    
+    $ch = curl_init($apiUrl);
     curl_setopt_array($ch, [
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_POST => true,
         CURLOPT_POSTFIELDS => json_encode($data),
-        CURLOPT_HTTPHEADER => [
-            'Content-Type: application/json',
-            'Authorization: Bearer ' . $apiKey,
-            'HTTP-Referer: ' . APP_URL,
-            'X-Title: HIM - Her Intelligent Mate'
-        ],
-        CURLOPT_TIMEOUT => 15
+        CURLOPT_HTTPHEADER => $headers,
+        CURLOPT_TIMEOUT => 15,
+        CURLOPT_SSL_VERIFYPEER => false
     ]);
     
     $response = curl_exec($ch);

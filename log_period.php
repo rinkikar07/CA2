@@ -77,7 +77,7 @@ require_once 'includes/header.php';
 ?>
 
 <div class="container-sm" style="padding-top:20px; padding-bottom:40px;">
-    <div class="card" data-aos="fade-up">
+    <div class="card" data-aos="zoom-in-up">
         <div style="text-align:center; margin-bottom:24px;">
             <h2><i class="fa-solid fa-droplet" style="color:var(--color-primary);"></i> Log Your Period</h2>
             <p class="text-muted">Track your cycle for better predictions</p>

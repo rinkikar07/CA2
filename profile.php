@@ -69,7 +69,7 @@ require_once 'includes/header.php';
 ?>
 
 <div class="container-sm" style="padding-top:20px; padding-bottom:40px;">
-    <h2 data-aos="fade-up" style="margin-bottom:24px;">
+    <h2 data-aos="zoom-in-up" style="margin-bottom:24px;">
         <i class="fa-solid fa-user" style="color:var(--color-secondary);"></i> Profile Settings
     </h2>
     
@@ -81,7 +81,7 @@ require_once 'includes/header.php';
     <?php endif; ?>
     
     <!-- Profile Info -->
-    <div class="card mb-3" data-aos="fade-up">
+    <div class="card mb-3" data-aos="zoom-in-up">
         <h3 class="card-title">Personal Information</h3>
         <form method="POST">
             <?= csrfField() ?>
@@ -118,7 +118,7 @@ require_once 'includes/header.php';
     </div>
     
     <!-- Change Password -->
-    <div class="card mb-3" data-aos="fade-up" data-aos-delay="100">
+    <div class="card mb-3" data-aos="zoom-in-up" data-aos-delay="100">
         <h3 class="card-title">Change Password</h3>
         <form method="POST">
             <?= csrfField() ?>
@@ -142,7 +142,7 @@ require_once 'includes/header.php';
     </div>
     
     <!-- Danger Zone -->
-    <div class="card" data-aos="fade-up" data-aos-delay="200" style="border-color:var(--color-error);">
+    <div class="card" data-aos="zoom-in-up" data-aos-delay="200" style="border-color:var(--color-error);">
         <h3 class="card-title" style="color:var(--color-error);">Danger Zone</h3>
         <p style="font-size:14px; color:var(--text-secondary); margin-bottom:16px;">
             Deleting your account will permanently remove all your data including cycle history, mood logs, and chat history. This cannot be undone.

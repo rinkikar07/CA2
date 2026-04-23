@@ -13,6 +13,10 @@ $notifCount = $isAuth ? getUnreadNotificationCount(getCurrentUserId()) : 0;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="HIM - Her Intelligent Mate. Your AI-powered period companion for emotional, physical, and mental wellness.">
+    <!-- FORCE NO CACHE -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title><?= sanitize($pageTitle) ?> | HIM - Her Intelligent Mate</title>
     
     <!-- Google Fonts -->
@@ -28,16 +32,21 @@ $notifCount = $isAuth ? getUnreadNotificationCount(getCurrentUserId()) : 0;
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     
     <!-- Global Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="assets/css/responsive.css?v=<?= time() ?>">
     
     <?php if (isset($extraCSS)): ?>
         <?php foreach ($extraCSS as $css): ?>
-            <link rel="stylesheet" href="<?= $css ?>">
+            <link rel="stylesheet" href="<?= $css ?>?v=<?= time() ?>">
         <?php endforeach; ?>
     <?php endif; ?>
 </head>
 <body class="<?= $isAuth ? 'authenticated' : 'guest' ?>">
+
+<!-- Page Loader -->
+<div class="page-loader" id="pageLoader">
+    <i class="fa-solid fa-heart loader-heart"></i>
+</div>
 
 <!-- Skip to content -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -66,8 +75,14 @@ $notifCount = $isAuth ? getUnreadNotificationCount(getCurrentUserId()) : 0;
             <a href="chat.php" class="nav-link <?= $currentPage === 'chat' ? 'active' : '' ?>">
                 <i class="fa-solid fa-comments"></i> <span>Chat</span>
             </a>
+            <a href="mood_journal.php" class="nav-link <?= $currentPage === 'mood_journal' ? 'active' : '' ?>">
+                <i class="fa-solid fa-book"></i> <span>Journal</span>
+            </a>
             <a href="wellness.php" class="nav-link <?= $currentPage === 'wellness' ? 'active' : '' ?>">
                 <i class="fa-solid fa-spa"></i> <span>Wellness</span>
+            </a>
+            <a href="games.php" class="nav-link <?= $currentPage === 'games' ? 'active' : '' ?>">
+                <i class="fa-solid fa-gamepad"></i> <span>Challenges</span>
             </a>
             <a href="insights.php" class="nav-link <?= $currentPage === 'insights' ? 'active' : '' ?>">
                 <i class="fa-solid fa-chart-line"></i> <span>Insights</span>
@@ -105,8 +120,6 @@ $notifCount = $isAuth ? getUnreadNotificationCount(getCurrentUserId()) : 0;
                 </button>
                 <div class="profile-dropdown" id="profileDropdown">
                     <a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a>
-                    <a href="mood_journal.php"><i class="fa-solid fa-book"></i> Mood Journal</a>
-                    <a href="games.php"><i class="fa-solid fa-gamepad"></i> Challenges</a>
                     <?php if (getCurrentUserRole() === 'admin'): ?>
                         <a href="admin/dashboard.php"><i class="fa-solid fa-shield-halved"></i> Admin</a>
                     <?php endif; ?>

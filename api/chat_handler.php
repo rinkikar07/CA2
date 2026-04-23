@@ -29,6 +29,19 @@ if ($action === 'send_message') {
         exit();
     }
     
+    // Fetch last 10 messages for context
+    $stmt = $pdo->prepare("SELECT sender, message FROM (SELECT sender, message, created_at FROM chat_messages WHERE session_id = ? ORDER BY created_at DESC LIMIT 10) sub ORDER BY created_at ASC");
+    $stmt->execute([$sessionId]);
+    $historyRows = $stmt->fetchAll();
+    
+    $history = [];
+    foreach ($historyRows as $row) {
+        $history[] = [
+            'role' => ($row['sender'] === 'user') ? 'user' : 'assistant',
+            'content' => $row['message']
+        ];
+    }
+    
     // Save user message
     $sentiment = detectSentiment($message);
     $stmt = $pdo->prepare("INSERT INTO chat_messages (session_id, sender, message, sentiment) VALUES (?, 'user', ?, ?)");
@@ -39,7 +52,7 @@ if ($action === 'send_message') {
     $stmt->execute([$mood, $sessionId]);
     
     // Get AI response
-    $aiResponse = getAIResponse($message, $mood, $phase, $userName);
+    $aiResponse = getAIResponse($message, $mood, $phase, $userName, $history);
     
     // Save AI response
     $stmt = $pdo->prepare("INSERT INTO chat_messages (session_id, sender, message) VALUES (?, 'ai', ?)");

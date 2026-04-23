@@ -54,12 +54,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Create Account | HIM - Her Intelligent Mate</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=<?= time() ?>">
     <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
     <div class="auth-wrapper">
-        <div class="auth-card" data-aos="fade-up">
+        <div class="auth-art"></div>
+        <div class="auth-form-container">
+            <div class="auth-card" data-aos="zoom-in-up" data-aos-duration="600">
             <div class="auth-header">
                 <a href="index.php" class="logo">
                     <span class="logo-icon">💕</span>
@@ -137,11 +139,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 Already have an account? <a href="login.php">Login here</a>
             </div>
         </div>
+        </div>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 600, once: true });
+        AOS.init({ duration: 800, easing: 'ease-out-back', once: false });
         
         document.getElementById('registerForm').addEventListener('submit', function(e) {
             const pw = document.getElementById('password').value;

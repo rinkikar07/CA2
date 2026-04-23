@@ -34,7 +34,7 @@ require_once 'includes/header.php';
 
 <div class="container">
     <!-- Welcome Banner -->
-    <div class="welcome-banner" data-aos="fade-up">
+    <div class="welcome-banner" data-aos="zoom-in-down" data-aos-easing="ease-out-cubic" data-aos-duration="800">
         <div class="welcome-text">
             <h1>Hi, <?= sanitize(explode(' ', $user['full_name'])[0]) ?>! <?= $phaseInfo['emoji'] ?></h1>
             <p>Here's your wellness overview for today</p>
@@ -46,7 +46,7 @@ require_once 'includes/header.php';
     </div>
     
     <!-- Quick Stats -->
-    <div class="stats-grid" data-aos="fade-up" data-aos-delay="100">
+    <div class="stats-grid" data-aos="zoom-in-up" data-aos-delay="200" data-aos-duration="600">
         <!-- Phase Card -->
         <div class="stat-card phase-card" style="--phase-color: <?= $phaseInfo['color'] ?>">
             <div class="stat-icon" style="background: <?= $phaseInfo['color'] ?>20; color: <?= $phaseInfo['color'] ?>">
@@ -93,24 +93,24 @@ require_once 'includes/header.php';
     </div>
     
     <!-- Main Grid -->
-    <div class="dashboard-grid">
+    <div class="dashboard-grid deck-container">
         <!-- Quick Actions -->
-        <div class="card" data-aos="fade-up">
+        <div class="card deck-card" data-aos="zoom-in-up" data-aos-duration="600">
             <h3 class="card-title">Quick Actions</h3>
             <div class="quick-actions">
-                <a href="log_period.php" class="action-btn action-period">
+                <a href="log_period.php" class="action-btn action-period" data-aos="flip-up" data-aos-delay="100">
                     <i class="fa-solid fa-droplet"></i>
                     <span>Log Period</span>
                 </a>
-                <a href="chat.php" class="action-btn action-chat">
+                <a href="chat.php" class="action-btn action-chat" data-aos="flip-up" data-aos-delay="200">
                     <i class="fa-solid fa-comments"></i>
                     <span>Chat</span>
                 </a>
-                <a href="voice.php" class="action-btn action-voice">
+                <a href="voice.php" class="action-btn action-voice" data-aos="flip-up" data-aos-delay="300">
                     <i class="fa-solid fa-microphone"></i>
                     <span>Voice</span>
                 </a>
-                <a href="mood_journal.php" class="action-btn action-mood">
+                <a href="mood_journal.php" class="action-btn action-mood" data-aos="flip-up" data-aos-delay="400">
                     <i class="fa-solid fa-face-smile"></i>
                     <span>Log Mood</span>
                 </a>
@@ -118,7 +118,7 @@ require_once 'includes/header.php';
         </div>
         
         <!-- Today's Mood -->
-        <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <div class="card deck-card" data-aos="zoom-in-up" data-aos-delay="200" data-aos-duration="600">
             <h3 class="card-title">How are you feeling?</h3>
             <?php if ($todayMood): ?>
                 <div class="mood-logged">
@@ -129,9 +129,11 @@ require_once 'includes/header.php';
                 <div class="mood-selector" id="quickMoodSelector">
                     <?php
                     $moods = ['happy' => '😊', 'sad' => '😢', 'anxious' => '😰', 'angry' => '😤', 'tired' => '😴', 'calm' => '😌', 'neutral' => '😐', 'irritated' => '😤'];
+                    $delay = 0;
                     foreach ($moods as $mood => $emoji):
+                    $delay += 50;
                     ?>
-                    <button class="mood-emoji" data-mood="<?= $mood ?>" title="<?= ucfirst($mood) ?>">
+                    <button class="mood-emoji" data-mood="<?= $mood ?>" title="<?= ucfirst($mood) ?>" data-aos="zoom-in" data-aos-delay="<?= $delay ?>">
                         <?= $emoji ?>
                     </button>
                     <?php endforeach; ?>
@@ -141,7 +143,7 @@ require_once 'includes/header.php';
         
         <!-- Today's Tip -->
         <?php if ($todayTip): ?>
-        <div class="card tip-card" data-aos="fade-up" data-aos-delay="200">
+        <div class="card tip-card deck-card" data-aos="zoom-in-up" data-aos-delay="300" data-aos-duration="600">
             <div class="tip-header">
                 <i class="fa-solid fa-lightbulb" style="color: var(--color-warning);"></i>
                 <h3 class="card-title">Today's Tip</h3>
@@ -153,7 +155,7 @@ require_once 'includes/header.php';
         <?php endif; ?>
         
         <!-- Points & Badges -->
-        <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <div class="card deck-card" data-aos="zoom-in-up" data-aos-delay="400" data-aos-duration="600">
             <h3 class="card-title">Your Progress</h3>
             <div class="points-display">
                 <div class="points-value">

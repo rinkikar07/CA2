@@ -81,8 +81,10 @@ function getFlashMessage() {
  * Get user's current cycle phase
  */
 function getCurrentPhase($lastPeriodStart, $avgCycleLength, $avgPeriodLength) {
-    $today = new DateTime();
+    if (!$lastPeriodStart) return 'menstrual';
+    $today = new DateTime('today');
     $start = new DateTime($lastPeriodStart);
+    $start->setTime(0, 0, 0);
     $diff = $start->diff($today)->days;
     $dayInCycle = ($diff % $avgCycleLength) + 1;
     
@@ -133,8 +135,10 @@ function getPhaseInfo($phase) {
  * Calculate days until next period
  */
 function daysUntilNextPeriod($nextPredictedDate) {
-    $today = new DateTime();
+    if (!$nextPredictedDate) return 0;
+    $today = new DateTime('today');
     $next = new DateTime($nextPredictedDate);
+    $next->setTime(0, 0, 0);
     $diff = $today->diff($next);
     return $diff->invert ? 0 : $diff->days;
 }
@@ -171,7 +175,7 @@ function getMoodStreak($userId) {
     if (empty($logs)) return 0;
     
     $streak = 0;
-    $checkDate = new DateTime();
+    $checkDate = new DateTime('today');
     
     // If no log today, start checking from yesterday
     if ($logs[0] !== $checkDate->format('Y-m-d')) {
@@ -195,9 +199,18 @@ function getMoodStreak($userId) {
  */
 function getUserPoints($userId) {
     global $pdo;
+    
+    // Get Badge Points
     $stmt = $pdo->prepare("SELECT COALESCE(SUM(b.points_value), 0) as total FROM user_badges ub JOIN badges b ON ub.badge_id = b.id WHERE ub.user_id = ?");
     $stmt->execute([$userId]);
-    return (int)$stmt->fetchColumn();
+    $badgePoints = (int)$stmt->fetchColumn();
+    
+    // Get Game Scores (Cap each game score slightly so it doesn't break the economy, or just take total sum)
+    $stmt = $pdo->prepare("SELECT COALESCE(SUM(score), 0) FROM game_scores WHERE user_id = ?");
+    $stmt->execute([$userId]);
+    $gamePoints = (int)$stmt->fetchColumn();
+    
+    return $badgePoints + $gamePoints;
 }
 
 /**

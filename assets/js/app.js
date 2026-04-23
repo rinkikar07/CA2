@@ -3,9 +3,41 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Hide page loader
+    window.addEventListener('load', () => {
+        const loader = document.getElementById('pageLoader');
+        if (loader) loader.classList.add('hidden');
+    });
+
     // Initialize AOS
     if (typeof AOS !== 'undefined') {
-        AOS.init({ duration: 600, once: true, offset: 50 });
+        AOS.init({ duration: 800, easing: 'ease-out-back', once: false, offset: 50 });
+    }
+    
+    // ===== Parallax Logic =====
+    const parallaxElements = document.querySelectorAll('.parallax');
+    if (parallaxElements.length > 0) {
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            parallaxElements.forEach(el => {
+                const speed = el.getAttribute('data-parallax-speed') || 0.3;
+                el.style.transform = `translateY(${scrollY * speed}px)`;
+            });
+        }, { passive: true });
+    }
+    
+    // ===== Text Reveal Logic =====
+    const revealElements = document.querySelectorAll('.text-reveal');
+    if (revealElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        revealElements.forEach(el => observer.observe(el));
     }
     
     // ===== Notification Dropdown =====

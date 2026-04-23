@@ -1,18 +1,23 @@
 /* ============================================
-   HIM - Responsive Styles
+   HIM - Responsive Styles (Full Mobile-First)
    ============================================ */
 
-/* Desktop Large (1440px+) */
+/* === BASE: All screens === */
+*, *::before, *::after { box-sizing: border-box; }
+img, canvas, video { max-width: 100%; height: auto; }
+
+/* === Desktop XL (1440px+) === */
 @media (min-width: 1440px) {
-    .container { max-width: 1320px; }
+    .container { max-width: 1400px; }
 }
 
-/* Desktop (1024px - 1439px) */
+/* === Desktop (1024px - 1439px) === */
 @media (max-width: 1439px) {
     h1 { font-size: 42px; }
+    .container { max-width: 100%; padding: 0 24px; }
 }
 
-/* Tablet (768px - 1023px) */
+/* === Tablet Landscape (1024px) === */
 @media (max-width: 1023px) {
     h1 { font-size: 36px; }
     h2 { font-size: 30px; }
@@ -20,37 +25,96 @@
     .sidebar-toggle { display: flex; }
     .mobile-nav { display: flex; }
     .authenticated .main-content { padding-bottom: 80px; }
-    .grid-3 { grid-template-columns: repeat(2, 1fr); }
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .profile-name { display: none; }
     .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
     .footer-brand { grid-column: 1 / -1; }
-    .profile-name { display: none; }
+
+    /* Grids: 2 columns on tablet */
+    .grid-3 { grid-template-columns: repeat(2, 1fr) !important; }
+    .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Journal: stack on tablet */
+    .journal-split { flex-direction: column !important; }
+
+    /* Tracker: allow wrapping */
+    .tracker-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Insights charts: stack */
+    .insights-chart-grid { grid-template-columns: 1fr !important; }
 }
 
-/* Mobile Large (577px - 767px) */
+/* === Tablet Portrait (768px) === */
 @media (max-width: 767px) {
     h1 { font-size: 30px; }
     h2 { font-size: 26px; }
     h3 { font-size: 20px; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .grid-3 { grid-template-columns: 1fr; }
-    .grid-4 { grid-template-columns: 1fr; }
+
+    .container { padding: 0 16px; }
+    .card, .glass-insight-card { padding: 20px !important; border-radius: 16px !important; }
+    .auth-card { padding: 32px 24px; }
+
+    /* All grids collapse to 1 col */
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr !important; }
     .form-row { grid-template-columns: 1fr; }
+
+    /* Challenges: 1 column on mobile */
+    .challenges-grid { grid-template-columns: 1fr !important; }
+
+    /* Journal: full stack */
+    .journal-split { flex-direction: column !important; }
+    .journal-split > div { min-width: 100% !important; width: 100% !important; }
+
+    /* Tracker: full stack */
+    .tracker-grid { grid-template-columns: 1fr !important; }
+
+    /* Insights: full stack */
+    .insights-chart-grid { grid-template-columns: 1fr !important; }
+
     .header-nav-guest { display: none; }
     .mobile-menu-btn { display: flex; }
-    .auth-card { padding: 32px 24px; }
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
-    .container { padding: 0 16px; }
+
+    /* Mood selector: wrap emojis */
+    .mood-selector { flex-wrap: wrap !important; justify-content: center !important; gap: 8px !important; }
+
+    /* Summary stat cards */
+    .stat-number { font-size: 36px !important; }
 }
 
-/* Mobile Small (up to 576px) */
+/* === Mobile Small (576px) === */
 @media (max-width: 576px) {
     h1 { font-size: 26px; }
     h2 { font-size: 22px; }
-    .btn-primary { padding: 12px 24px; font-size: 15px; }
+    h3 { font-size: 18px; }
+
+    .container { padding: 0 12px; }
+    .card { padding: 16px !important; border-radius: 14px !important; }
+    .btn-primary { padding: 12px 20px; font-size: 15px; }
     .btn-lg { padding: 14px 28px; font-size: 16px; }
-    .card { padding: var(--space-md); }
     .auth-card { padding: 24px 20px; }
     .notif-dropdown { width: 280px; right: -48px; }
-    .flash-message { margin: 0 16px 16px; }
+    .flash-message { margin: 0 12px 12px; }
+
+    /* Charts: minimum height */
+    .chart-container { height: 220px !important; }
+    .symptom-container { height: 220px !important; }
+
+    /* Game badges: 2 per row */
+    .grid-4 { grid-template-columns: repeat(2, 1fr) !important; }
+
+    /* Header logo text */
+    .logo-text { font-size: 20px !important; }
+
+    /* Inline flex rows: stack */
+    .page-header-row { flex-direction: column !important; align-items: center !important; gap: 12px !important; }
+
+    /* Period info items */
+    .info-item { padding: 12px !important; }
+}
+
+/* === Extra Small (400px) === */
+@media (max-width: 400px) {
+    h2 { font-size: 20px; }
+    .btn { font-size: 14px; padding: 10px 18px; }
+    .mood-emoji { width: 44px !important; height: 44px !important; font-size: 24px !important; }
 }

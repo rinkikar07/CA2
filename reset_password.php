@@ -52,7 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="auth-wrapper">
-        <div class="auth-card">
+        <div class="auth-art" data-aos="fade-in" data-aos-duration="1000"></div>
+        <div class="auth-form-container">
+            <div class="auth-card" data-aos="zoom-in-up" data-aos-duration="600">
             <div class="auth-header">
                 <a href="index.php" class="logo">
                     <span class="logo-icon">💕</span>
@@ -83,6 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <i class="fa-solid fa-key"></i> Reset Password
                 </button>
             </form>
+        </div>
         </div>
     </div>
 </body>
