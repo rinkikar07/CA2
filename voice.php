@@ -18,7 +18,7 @@ require_once 'includes/header.php';
     <div class="voice-page" data-aos="zoom-in-up">
         <!-- Hero -->
         <div class="voice-hero">
-            <h2><?= $phaseInfo['emoji'] ?> Voice Assistant</h2>
+            <h2>Voice Assistant</h2>
             <p>I'm here for you. Just speak, and I'll listen.</p>
             <span class="badge badge-primary" style="background: <?= $phaseInfo['color'] ?>20; color: <?= $phaseInfo['color'] ?>">
                 <i class="fa-solid <?= $phaseInfo['icon'] ?>"></i> <?= $phaseInfo['name'] ?>
@@ -43,7 +43,7 @@ require_once 'includes/header.php';
         <!-- Response -->
         <div class="voice-response card" id="voiceResponse" style="display:none;">
             <div class="response-header">
-                <span class="response-avatar">💕</span>
+                <span class="response-avatar"><i class="fa-solid fa-heart"></i></span>
                 <span>HIM says:</span>
                 <button class="btn btn-sm btn-icon" id="replayBtn" title="Read aloud again">
                     <i class="fa-solid fa-volume-up"></i>

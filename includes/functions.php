@@ -103,29 +103,25 @@ function getPhaseInfo($phase) {
             'name' => 'Menstrual Phase',
             'icon' => 'fa-droplet',
             'color' => '#E8567F',
-            'description' => 'Your body is shedding the uterine lining. Take it easy, rest, and be gentle with yourself.',
-            'emoji' => '🌙'
+            'description' => 'Your body is shedding the uterine lining. Take it easy, rest, and be gentle with yourself.'
         ],
         'follicular' => [
             'name' => 'Follicular Phase',
             'icon' => 'fa-seedling',
             'color' => '#7CB69E',
-            'description' => 'Energy is rising! Great time for new beginnings, workouts, and creativity.',
-            'emoji' => '🌱'
+            'description' => 'Energy is rising! Great time for new beginnings, workouts, and creativity.'
         ],
         'ovulation' => [
             'name' => 'Ovulation Phase',
             'icon' => 'fa-sun',
             'color' => '#F4A261',
-            'description' => 'Peak energy and confidence! You\'re at your strongest and most social.',
-            'emoji' => '☀️'
+            'description' => 'Peak energy and confidence! You\'re at your strongest and most social.'
         ],
         'luteal' => [
             'name' => 'Luteal Phase',
             'icon' => 'fa-cloud-moon',
             'color' => '#9B8EC0',
-            'description' => 'Winding down. Focus on self-care, comfort foods, and gentle activities.',
-            'emoji' => '🌸'
+            'description' => 'Winding down. Focus on self-care, comfort foods, and gentle activities.'
         ]
     ];
     return $phases[$phase] ?? $phases['menstrual'];

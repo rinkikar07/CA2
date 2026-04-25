@@ -6,13 +6,13 @@
     max-width: 800px; margin: 0 auto;
     display: flex; flex-direction: column;
     height: calc(100vh - var(--header-height) - 24px);
-    background: white; border-radius: var(--border-radius-lg);
+    background: var(--bg-card); border-radius: var(--border-radius-lg);
     border: 1px solid var(--border-light); overflow: hidden;
 }
 .chat-header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 16px 24px; border-bottom: 1px solid var(--border-light);
-    background: white;
+    background: var(--bg-card);
 }
 .chat-header-info { display: flex; align-items: center; gap: 12px; }
 .chat-avatar {
@@ -33,7 +33,7 @@
 .mood-options { display: flex; gap: 6px; }
 .mood-chip {
     padding: 6px 14px; border-radius: 50px; font-size: 13px;
-    border: 1px solid var(--border-light); background: white;
+    border: 1px solid var(--border-light); background: var(--bg-card);
     cursor: pointer; transition: var(--transition-fast); white-space: nowrap;
 }
 .mood-chip:hover { border-color: var(--color-primary); }
@@ -43,7 +43,7 @@
 .chat-messages {
     flex: 1; overflow-y: auto; padding: 24px;
     display: flex; flex-direction: column; gap: 16px;
-    background: linear-gradient(180deg, #FEFBFC, #FFF0F3);
+    background: var(--bg-body);
 }
 .chat-bubble { max-width: 75%; position: relative; animation: slideIn 0.3s ease; }
 .chat-bubble-user {
@@ -56,7 +56,7 @@
     font-size: 15px; line-height: 1.5;
 }
 .chat-bubble-ai .bubble-content {
-    background: white; color: var(--text-primary);
+    background: var(--bg-card); color: var(--text-primary);
     padding: 14px 20px; border-radius: 20px 20px 20px 4px;
     font-size: 15px; line-height: 1.5;
     border: 1px solid var(--border-light);
@@ -93,7 +93,7 @@
 /* Input Area */
 .chat-input-area {
     padding: 16px 24px; border-top: 1px solid var(--border-light);
-    background: white;
+    background: var(--bg-card);
 }
 .chat-input-wrapper {
     display: flex; align-items: flex-end; gap: 12px;
@@ -134,7 +134,7 @@
     backdrop-filter: blur(4px);
 }
 .history-modal-content {
-    background: white; border-radius: var(--border-radius-lg);
+    background: var(--bg-card); border-radius: var(--border-radius-lg);
     width: 90%; max-width: 500px; max-height: 80vh;
     display: flex; flex-direction: column;
     box-shadow: var(--shadow-lg); overflow: hidden;
@@ -158,7 +158,7 @@
     display: flex; flex-direction: column; gap: 8px;
     padding: 14px; border: 1px solid var(--border-light);
     border-radius: var(--border-radius-md); text-decoration: none;
-    transition: var(--transition-normal); background: white;
+    transition: var(--transition-normal); background: var(--bg-card);
 }
 .session-item:hover {
     border-color: var(--color-primary-light);

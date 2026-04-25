@@ -335,7 +335,7 @@ h4 { font-size: 20px; font-weight: 600; }
 
 /* Unique Page Backgrounds */
 .bg-tracker {
-    background: linear-gradient(120deg, #ffd1dc 0%, #e0f7fa 50%, #f3e5f5 100%);
+    background: linear-gradient(120deg, var(--bg-body) 0%, var(--color-primary-light) 50%, var(--bg-body) 100%);
     background-size: 200% 200%;
     animation: flowBg 15s ease infinite;
     min-height: calc(100vh - 70px);
@@ -343,23 +343,11 @@ h4 { font-size: 20px; font-weight: 600; }
     position: relative;
     overflow: hidden;
 }
-.bg-tracker::before { content: '🌸'; position: absolute; font-size: 80px; opacity: 0.1; top: 10%; left: 5%; animation: gentleFloat 6s infinite; }
-.bg-tracker::after { content: '🩸'; position: absolute; font-size: 60px; opacity: 0.1; bottom: 20%; right: 10%; animation: gentleFloat 5s infinite; }
 
-.bg-insights {
-    background: linear-gradient(135deg, #e8f5e9 0%, #b2dfdb 100%); /* Mint Green to Teal to contrast pink graphs */
-    background-size: 200% 200%;
-    animation: flowBg 20s ease infinite;
-    min-height: calc(100vh - 70px);
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-}
-.bg-insights::before { content: '📊'; position: absolute; font-size: 100px; opacity: 0.05; top: 20%; right: 5%; animation: gentleFloat 8s infinite; }
-.bg-insights::after { content: '✨'; position: absolute; font-size: 50px; opacity: 0.2; bottom: 10%; left: 15%; animation: gentleFloat 4s infinite; }
+
 
 .bg-chat {
-    background: linear-gradient(45deg, #e1bee7 0%, #c8e6c9 100%);
+    background: linear-gradient(45deg, var(--bg-body) 0%, var(--color-secondary-light) 100%);
     background-size: 200% 200%;
     animation: flowBg 12s ease infinite;
     min-height: calc(100vh - 70px);
@@ -367,8 +355,6 @@ h4 { font-size: 20px; font-weight: 600; }
     position: relative;
     overflow: hidden;
 }
-.bg-chat::before { content: '💬'; position: absolute; font-size: 80px; opacity: 0.1; top: 15%; left: 10%; animation: gentleFloat 7s infinite; }
-.bg-chat::after { content: '💕'; position: absolute; font-size: 120px; opacity: 0.05; bottom: 5%; right: 5%; animation: gentleFloat 9s infinite; }
 
 /* === GLOBAL ALIGNMENT === */
 body { text-align: center !important; }
@@ -393,18 +379,27 @@ body { text-align: center !important; }
     box-sizing: border-box;
 }
 /* Header/Nav structural overrides */
-.header-inner, .footer-grid, .calendar-header, .calendar-legend {
+.footer-grid, .calendar-header, .calendar-legend {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
+}
+.header-inner {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    width: 100% !important;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
 }
 .header-left, .header-right, .header-nav {
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
 }
-.header-inner { justify-content: space-between !important; width: 100%; max-width: 1200px; margin: 0 auto; }
 /* Challenge cards inside grids should fill available space */
 .games-challenge-card {
     box-sizing: border-box;
@@ -467,11 +462,7 @@ body { text-align: center !important; }
 
 /* === Parallax & Text Reveals === */
 .parallax-wellness {
-    background-image: url('../images/wellness_parallax.png');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: var(--bg-body);
     min-height: 100vh;
 }
 .text-reveal-wrapper {

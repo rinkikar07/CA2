@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = loginUser($email, $password);
             if ($result['success']) {
                 $redirectTo = ($result['role'] === 'admin') ? 'admin/dashboard.php' : 'dashboard.php';
-                redirect($redirectTo, 'Welcome back! 💕', 'success');
+                redirect($redirectTo, 'Welcome back! Let\'s continue your wellness journey', 'success');
             } else {
                 $errors[] = $result['error'];
             }
@@ -52,7 +52,7 @@ $msg = $_GET['msg'] ?? '';
             <div class="auth-card" data-aos="zoom-in-up" data-aos-duration="600">
             <div class="auth-header">
                 <a href="index.php" class="logo">
-                    <span class="logo-icon">💕</span>
+                    <span class="logo-icon"><i class="fa-solid fa-heart"></i></span>
                     <span class="logo-text">HIM</span>
                 </a>
                 <h1>Welcome Back</h1>

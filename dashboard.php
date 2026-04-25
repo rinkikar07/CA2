@@ -36,7 +36,7 @@ require_once 'includes/header.php';
     <!-- Welcome Banner -->
     <div class="welcome-banner" data-aos="zoom-in-down" data-aos-easing="ease-out-cubic" data-aos-duration="800">
         <div class="welcome-text">
-            <h1>Hi, <?= sanitize(explode(' ', $user['full_name'])[0]) ?>! <?= $phaseInfo['emoji'] ?></h1>
+            <h1>Hi, <?= sanitize(explode(' ', $user['full_name'])[0]) ?>!</h1>
             <p>Here's your wellness overview for today</p>
         </div>
         <div class="welcome-date">
@@ -76,7 +76,7 @@ require_once 'includes/header.php';
             </div>
             <div class="stat-info">
                 <h3><?= $streak ?> day<?= $streak !== 1 ? 's' : '' ?></h3>
-                <p>Logging streak 🔥</p>
+                <p>Logging streak</p>
             </div>
         </div>
         
@@ -128,13 +128,13 @@ require_once 'includes/header.php';
             <?php else: ?>
                 <div class="mood-selector" id="quickMoodSelector">
                     <?php
-                    $moods = ['happy' => '😊', 'sad' => '😢', 'anxious' => '😰', 'angry' => '😤', 'tired' => '😴', 'calm' => '😌', 'neutral' => '😐', 'irritated' => '😤'];
+                    $moods = ['happy' => 'Happy', 'sad' => 'Sad', 'anxious' => 'Anxious', 'angry' => 'Angry', 'tired' => 'Tired', 'calm' => 'Calm', 'neutral' => 'Neutral', 'irritated' => 'Irritated'];
                     $delay = 0;
-                    foreach ($moods as $mood => $emoji):
+                    foreach ($moods as $mood => $label):
                     $delay += 50;
                     ?>
-                    <button class="mood-emoji" data-mood="<?= $mood ?>" title="<?= ucfirst($mood) ?>" data-aos="zoom-in" data-aos-delay="<?= $delay ?>">
-                        <?= $emoji ?>
+                    <button class="mood-emoji" data-mood="<?= $mood ?>" title="<?= ucfirst($mood) ?>" data-aos="zoom-in" data-aos-delay="<?= $delay ?>" style="font-size:14px; width:auto; padding:8px 12px; border-radius:12px;">
+                        <?= $label ?>
                     </button>
                     <?php endforeach; ?>
                 </div>
@@ -179,7 +179,7 @@ document.querySelectorAll('#quickMoodSelector .mood-emoji').forEach(btn => {
             csrf_token: getCSRFToken()
         });
         if (result.success) {
-            showSuccess('Mood Logged!', `You're feeling ${mood} today 💕`).then(() => location.reload());
+            showSuccess('Mood Logged!', `You're feeling ${mood} today.`).then(() => location.reload());
         }
     });
 });

@@ -4,9 +4,9 @@
 
 .tracker-banner {
     display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; gap: 16px;
-    background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(12px); border-radius: 24px;
-    padding: 30px; border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin-bottom: 30px;
+    background: var(--bg-card); backdrop-filter: blur(12px); border-radius: 24px;
+    padding: 30px; border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-md); margin-bottom: 30px;
 }
 .phase-badge {
     display: inline-flex; align-items: center; gap: 8px;
@@ -26,9 +26,9 @@
 /* Calendar */
 .calendar-card { 
     padding: 30px; border-radius: 24px; text-align: center;
-    background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    background: var(--bg-card); backdrop-filter: blur(15px);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-lg);
 }
 .calendar-header {
     display: flex; justify-content: center; align-items: center; gap: 24px;
@@ -48,9 +48,9 @@
     aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
     border-radius: 16px; font-size: 15px; font-weight: 600; color: var(--text-primary);
     cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); position: relative;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    box-shadow: var(--shadow-sm);
 }
 @keyframes glowRed {
     0% { box-shadow: 0 0 5px rgba(232, 86, 127, 0.4); }
@@ -74,19 +74,19 @@
 }
 
 @keyframes glowingThump {
-    0% { transform: scale(1); box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, inset 0 0 5px #ff00ff; border-color: #ff00ff; }
-    15% { transform: scale(1.15); box-shadow: 0 0 15px #00ffff, 0 0 30px #ff00ff, inset 0 0 10px #00ffff; border-color: #00ffff; }
-    30% { transform: scale(1); box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, inset 0 0 5px #ff00ff; border-color: #ff00ff; }
-    45% { transform: scale(1.15); box-shadow: 0 0 15px #ff00ff, 0 0 30px #00ffff, inset 0 0 10px #ff00ff; border-color: #00ffff; }
-    100% { transform: scale(1); box-shadow: 0 0 5px #ff00ff, 0 0 10px #00ffff, inset 0 0 5px #ff00ff; border-color: #ff00ff; }
+    0% { transform: scale(1); box-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-secondary), inset 0 0 5px var(--color-primary); border-color: var(--color-primary); }
+    15% { transform: scale(1.15); box-shadow: 0 0 15px var(--color-secondary), 0 0 30px var(--color-primary), inset 0 0 10px var(--color-secondary); border-color: var(--color-secondary); }
+    30% { transform: scale(1); box-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-secondary), inset 0 0 5px var(--color-primary); border-color: var(--color-primary); }
+    45% { transform: scale(1.15); box-shadow: 0 0 15px var(--color-primary), 0 0 30px var(--color-secondary), inset 0 0 10px var(--color-primary); border-color: var(--color-secondary); }
+    100% { transform: scale(1); box-shadow: 0 0 5px var(--color-primary), 0 0 10px var(--color-secondary), inset 0 0 5px var(--color-primary); border-color: var(--color-primary); }
 }
 
-.cal-day:hover { transform: translateY(-4px) scale(1.05); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; background: white; z-index: 10; animation: none; }
+.cal-day:hover { transform: translateY(-4px) scale(1.05); box-shadow: var(--shadow-lg) !important; background: var(--bg-card); z-index: 10; animation: none; }
 .cal-day.today { 
-    font-weight: 900; color: #ff00ff;
+    font-weight: 900; color: var(--color-primary);
     animation: glowingThump 2.5s infinite cubic-bezier(0.25, 0.46, 0.45, 0.94); 
     z-index: 5;
-    background: white;
+    background: var(--bg-card);
 }
 .cal-day.empty { cursor: default; background: transparent; border: none; box-shadow: none; animation: none; }
 .cal-day.empty:hover { transform: none; box-shadow: none !important; background: transparent; animation: none; }
@@ -116,8 +116,8 @@
 .info-list { display: flex; flex-direction: column; gap: 16px; align-items: center; }
 .info-item {
     display: flex; flex-direction: column; align-items: center; gap: 4px;
-    font-size: 15px; background: rgba(255,255,255,0.5); padding: 12px 24px;
-    border-radius: 16px; width: 100%; border: 1px solid rgba(255,255,255,0.8);
+    font-size: 15px; background: var(--bg-card); padding: 12px 24px;
+    border-radius: 16px; width: 100%; border: 1px solid var(--border-light);
 }
 .info-label { color: var(--text-muted); }
 .info-value { font-weight: 600; color: var(--text-primary); }
@@ -131,7 +131,7 @@
 .period-item {
     display: flex; flex-direction: column; align-items: center; gap: 8px;
     padding: 16px; border-radius: 16px; width: 100%;
-    background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.8);
+    background: var(--bg-card); border: 1px solid var(--border-light);
     font-size: 14px; text-align: center;
 }
 .flow-indicator {

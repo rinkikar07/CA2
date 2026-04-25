@@ -88,16 +88,16 @@ require_once 'includes/header.php';
                 <!-- Motivational Graphics -->
                 <div style="margin-top: 40px; padding: 24px; background: linear-gradient(135deg, rgba(255,255,255,0.5), rgba(255,255,255,0.2)); border-radius: 24px; text-align: center; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 10px 20px rgba(0,0,0,0.02); position:relative; overflow:hidden;">
                     <div style="position:absolute; top:-20px; right:-20px; width:100px; height:100px; background:radial-gradient(circle, rgba(232,86,127,0.1) 0%, transparent 70%); border-radius:50%;"></div>
-                    <div style="font-size: 36px; margin-bottom: 12px; animation: gentleFloat 4s infinite;">✨</div>
+                    <div style="font-size: 36px; margin-bottom: 12px; animation: gentleFloat 4s infinite; color:var(--color-primary);"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
                     <h4 style="font-size: 16px; color: var(--color-primary); font-weight: 800; margin-bottom: 10px; text-transform:uppercase; letter-spacing:1px;">Did You Know?</h4>
                     <p style="font-size: 14px; color: var(--text-secondary); line-height: 1.6; font-weight: 600;">
                         <?php 
                         $facts = [
-                            "Your body burns 100-300 extra calories a day during your luteal phase! It's okay to indulge a little. 🍫",
-                            "Adequate sleep during your period can significantly reduce cramps and fatigue. Prioritize rest! 😴",
-                            "Your pain tolerance and energy levels are highest during the follicular phase. Great time for a new workout! 💪",
-                            "Hydration is your best friend. Drinking plenty of water reduces bloating and hormonal headaches. 💧",
-                            "Your intuition, communication skills, and creativity actually peak during your ovulation phase! 🌸"
+                            "Your body burns 100-300 extra calories a day during your luteal phase! It's okay to indulge a little.",
+                            "Adequate sleep during your period can significantly reduce cramps and fatigue. Prioritize rest!",
+                            "Your pain tolerance and energy levels are highest during the follicular phase. Great time for a new workout!",
+                            "Hydration is your best friend. Drinking plenty of water reduces bloating and hormonal headaches.",
+                            "Your intuition, communication skills, and creativity actually peak during your ovulation phase!"
                         ];
                         echo $facts[array_rand($facts)];
                         ?>
@@ -109,7 +109,7 @@ require_once 'includes/header.php';
         <!-- Column 2: Info & Stats -->
         <div style="display:flex; flex-direction:column; gap:24px;">
             <a href="log_period.php" class="btn btn-primary" style="width:100%; border-radius:24px; padding:16px; font-weight:800; font-size:16px;" data-aos="zoom-in-up" data-aos-delay="150">
-                <i class="fa-solid fa-plus"></i> Log New Period ✨
+                <i class="fa-solid fa-plus"></i> Log New Period
             </a>
             
             <?php if (!empty($cycleLengths)): ?>

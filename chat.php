@@ -55,7 +55,7 @@ require_once 'includes/header.php';
     <!-- Chat Header -->
     <div class="chat-header" style="background: rgba(255,255,255,0.4); border-bottom: 1px solid rgba(255,255,255,0.6); border-radius:24px 24px 0 0;">
         <div class="chat-header-info">
-            <div class="chat-avatar">💕</div>
+            <div class="chat-avatar"><i class="fa-solid fa-robot"></i></div>
             <div>
                 <h3 class="text-reveal"><span>HIM Chat</span></h3>
                 <span class="chat-status" style="color: <?= $phaseInfo['color'] ?>">
@@ -77,13 +77,13 @@ require_once 'includes/header.php';
     <div class="chat-mood-bar" id="moodBar">
         <span class="mood-label">How are you feeling?</span>
         <div class="mood-options">
-            <button class="mood-chip active" data-mood="neutral">😐 Neutral</button>
-            <button class="mood-chip" data-mood="happy">😊 Happy</button>
-            <button class="mood-chip" data-mood="sad">😢 Sad</button>
-            <button class="mood-chip" data-mood="anxious">😰 Anxious</button>
-            <button class="mood-chip" data-mood="angry">😤 Angry</button>
-            <button class="mood-chip" data-mood="tired">😴 Tired</button>
-            <button class="mood-chip" data-mood="calm">😌 Calm</button>
+            <button class="mood-chip active" data-mood="neutral">Neutral</button>
+            <button class="mood-chip" data-mood="happy">Happy</button>
+            <button class="mood-chip" data-mood="sad">Sad</button>
+            <button class="mood-chip" data-mood="anxious">Anxious</button>
+            <button class="mood-chip" data-mood="angry">Angry</button>
+            <button class="mood-chip" data-mood="tired">Tired</button>
+            <button class="mood-chip" data-mood="calm">Calm</button>
         </div>
     </div>
     
@@ -99,9 +99,9 @@ require_once 'includes/header.php';
         <?php if (empty($messages)): ?>
             <div class="chat-bubble chat-bubble-ai">
                 <div class="bubble-content">
-                    Hi <?= sanitize(explode(' ', $user['full_name'])[0]) ?>! <?= $phaseInfo['emoji'] ?> I'm HIM, your wellness companion. How are you feeling today? I'm here to listen, comfort, and support you. 💕
+                    Hi <?= sanitize(explode(' ', $user['full_name'])[0]) ?>! I'm HIM, your wellness companion. How are you feeling today? I'm here to listen, comfort, and support you.
                 </div>
-                <span class="bubble-time">Now</span>
+                <span class="response-avatar"><i class="fa-solid fa-heart"></i></span>
             </div>
         <?php else: ?>
             <?php foreach ($messages as $msg): ?>

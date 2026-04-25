@@ -122,7 +122,7 @@ if (isLoggedIn()) {
     <header class="header header-guest" id="header">
         <div class="header-inner">
             <a href="index.php" class="logo">
-                <span class="logo-icon">💕</span>
+                <span class="logo-icon"><i class="fa-solid fa-heart"></i></span>
                 <span class="logo-text">HIM</span>
             </a>
             <nav class="header-nav-guest">
@@ -149,7 +149,7 @@ if (isLoggedIn()) {
     <section class="hero">
         <div class="hero-content">
             <div class="hero-badge" data-aos="fade-down">
-                <i class="fa-solid fa-sparkles"></i> AI-Powered Period Companion
+                AI-Powered Period Companion
             </div>
             <h1 data-aos="zoom-in-up" data-aos-delay="100">
                 Your <span class="gradient-text">Intelligent Mate</span><br>During Every Phase
@@ -159,7 +159,7 @@ if (isLoggedIn()) {
             </p>
             <div class="hero-buttons" data-aos="zoom-in-up" data-aos-delay="300">
                 <a href="register.php" class="btn btn-primary btn-lg">
-                    <i class="fa-solid fa-heart"></i> Get Started Free
+                    Get Started Free
                 </a>
                 <a href="#features" class="btn btn-secondary btn-lg">
                     <i class="fa-solid fa-arrow-down"></i> Learn More
@@ -286,7 +286,7 @@ if (isLoggedIn()) {
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo"><span class="logo-icon">💕</span><span class="logo-text">HIM</span></div>
+                    <div class="logo"><span class="logo-icon"><i class="fa-solid fa-heart"></i></span><span class="logo-text">HIM</span></div>
                     <p>Her Intelligent Mate — Your AI-powered period companion for emotional, physical, and mental wellness.</p>
                 </div>
                 <div class="footer-links">
@@ -303,7 +303,7 @@ if (isLoggedIn()) {
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; <?= date('Y') ?> HIM - Her Intelligent Mate. Made with 💕 for women everywhere.</p>
+                <p>&copy; <?= date('Y') ?> HIM - Her Intelligent Mate. Made for women everywhere.</p>
             </div>
         </div>
     </footer>

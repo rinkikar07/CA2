@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$startDate, $avgCycle, $nextPredicted, $regularity, $pcosFlag, $userId]);
                 
                 $pdo->commit();
-                redirect('cycle_tracker.php', 'Period logged successfully! 💕', 'success');
+                redirect('cycle_tracker.php', 'Period logged successfully!', 'success');
             } catch (Exception $e) {
                 $pdo->rollBack();
                 $errors[] = 'Failed to save. Please try again.';
@@ -107,23 +107,23 @@ require_once 'includes/header.php';
             <div class="form-group">
                 <label class="form-label">Flow Intensity</label>
                 <div style="display:flex; gap:12px;">
-                    <label class="flow-option"><input type="radio" name="flow_intensity" value="light"> <span class="flow-chip flow-light-chip">💧 Light</span></label>
-                    <label class="flow-option"><input type="radio" name="flow_intensity" value="medium" checked> <span class="flow-chip flow-medium-chip">💧💧 Medium</span></label>
-                    <label class="flow-option"><input type="radio" name="flow_intensity" value="heavy"> <span class="flow-chip flow-heavy-chip">💧💧💧 Heavy</span></label>
+                    <label class="flow-option"><input type="radio" name="flow_intensity" value="light"> <span class="flow-chip flow-light-chip">Light</span></label>
+                    <label class="flow-option"><input type="radio" name="flow_intensity" value="medium" checked> <span class="flow-chip flow-medium-chip">Medium</span></label>
+                    <label class="flow-option"><input type="radio" name="flow_intensity" value="heavy"> <span class="flow-chip flow-heavy-chip">Heavy</span></label>
                 </div>
             </div>
             
             <div class="form-group">
                 <label class="form-label">Symptoms</label>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                    <label class="form-check"><input type="checkbox" name="cramps"> 😣 Cramps</label>
-                    <label class="form-check"><input type="checkbox" name="headache"> 🤕 Headache</label>
-                    <label class="form-check"><input type="checkbox" name="bloating"> 🫧 Bloating</label>
-                    <label class="form-check"><input type="checkbox" name="fatigue"> 😴 Fatigue</label>
-                    <label class="form-check"><input type="checkbox" name="mood_swings"> 🎭 Mood Swings</label>
-                    <label class="form-check"><input type="checkbox" name="acne"> 😖 Acne</label>
-                    <label class="form-check"><input type="checkbox" name="back_pain"> 💆 Back Pain</label>
-                    <label class="form-check"><input type="checkbox" name="cravings"> 🍫 Cravings</label>
+                    <label class="form-check"><input type="checkbox" name="cramps"> Cramps</label>
+                    <label class="form-check"><input type="checkbox" name="headache"> Headache</label>
+                    <label class="form-check"><input type="checkbox" name="bloating"> Bloating</label>
+                    <label class="form-check"><input type="checkbox" name="fatigue"> Fatigue</label>
+                    <label class="form-check"><input type="checkbox" name="mood_swings"> Mood Swings</label>
+                    <label class="form-check"><input type="checkbox" name="acne"> Acne</label>
+                    <label class="form-check"><input type="checkbox" name="back_pain"> Back Pain</label>
+                    <label class="form-check"><input type="checkbox" name="cravings"> Cravings</label>
                 </div>
             </div>
             
