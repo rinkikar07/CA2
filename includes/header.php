@@ -633,6 +633,49 @@ $notifCount = $isAuth ? getUnreadNotificationCount(getCurrentUserId()) : 0;
     </div>
 </header>
 
+<!-- ===== SIDEBAR MENU ===== -->
+<aside class="sidebar-menu" id="sidebarMenu">
+    <div class="sidebar-header">
+        <div class="logo">
+            <span class="logo-icon"><i class="fa-solid fa-heart"></i></span>
+            <span class="logo-text">HIM Menu</span>
+        </div>
+        <button class="sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="sidebar-content">
+        <div class="sidebar-section">
+            <h6 class="sidebar-label">Main Navigation</h6>
+            <a href="dashboard.php" class="sidebar-link <?= $currentPage === 'dashboard' ? 'active' : '' ?>"><i class="fa-solid fa-house"></i> Dashboard</a>
+            <a href="cycle_tracker.php" class="sidebar-link <?= $currentPage === 'cycle_tracker' ? 'active' : '' ?>"><i class="fa-solid fa-calendar-days"></i> Cycle Tracker</a>
+            <a href="chat.php" class="sidebar-link <?= $currentPage === 'chat' ? 'active' : '' ?>"><i class="fa-solid fa-comments"></i> AI Assistant</a>
+        </div>
+        
+        <div class="sidebar-section">
+            <h6 class="sidebar-label">Wellness Tools</h6>
+            <a href="mood_journal.php" class="sidebar-link <?= $currentPage === 'mood_journal' ? 'active' : '' ?>"><i class="fa-solid fa-book"></i> Mood Journal</a>
+            <a href="wellness.php" class="sidebar-link <?= $currentPage === 'wellness' ? 'active' : '' ?>"><i class="fa-solid fa-spa"></i> Wellness Hub</a>
+            <a href="audiobooks.php" class="sidebar-link <?= $currentPage === 'audiobooks' ? 'active' : '' ?>"><i class="fa-solid fa-headphones"></i> Audiobooks</a>
+        </div>
+
+        <div class="sidebar-section">
+            <h6 class="sidebar-label">Advanced Features</h6>
+            <a href="partner_mode.php" class="sidebar-link <?= $currentPage === 'partner_mode' ? 'active' : '' ?>"><i class="fa-solid fa-user-group"></i> Partner Sharing</a>
+            <a href="reports.php" class="sidebar-link <?= $currentPage === 'reports' ? 'active' : '' ?>"><i class="fa-solid fa-file-medical"></i> Health Reports</a>
+            <a href="community.php" class="sidebar-link <?= $currentPage === 'community' ? 'active' : '' ?>"><i class="fa-solid fa-masks-theater"></i> Community Forum</a>
+        </div>
+
+        <div class="sidebar-section">
+            <h6 class="sidebar-label">Insights & Growth</h6>
+            <a href="games.php" class="sidebar-link <?= $currentPage === 'games' ? 'active' : '' ?>"><i class="fa-solid fa-gamepad"></i> Challenges</a>
+            <a href="insights.php" class="sidebar-link <?= $currentPage === 'insights' ? 'active' : '' ?>"><i class="fa-solid fa-chart-line"></i> Data Insights</a>
+        </div>
+    </div>
+    <div class="sidebar-footer">
+        <a href="logout.php" class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+    </div>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
 <!-- Mobile Bottom Nav -->
 <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
     <a href="dashboard.php" class="mobile-nav-item <?= $currentPage === 'dashboard' ? 'active' : '' ?>">

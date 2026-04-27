@@ -13,6 +13,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (typeof AOS !== 'undefined') {
         AOS.init({ duration: 800, easing: 'ease-out-back', once: false, offset: 50 });
     }
+
+    // ===== Sidebar Logic =====
+    const sidebarToggle  = document.getElementById('sidebarToggle');
+    const sidebarClose   = document.getElementById('sidebarClose');
+    const sidebarMenu    = document.getElementById('sidebarMenu');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (sidebarToggle && sidebarMenu) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebarMenu.classList.add('active');
+            sidebarOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const closeSidebar = () => {
+            sidebarMenu.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        };
+
+        if (sidebarClose) sidebarClose.addEventListener('click', closeSidebar);
+        if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeSidebar);
+    }
     
     // ===== Parallax Logic =====
     const parallaxElements = document.querySelectorAll('.parallax');
